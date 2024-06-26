@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+ name: booking
+spec:
+  hosts:
+  - "booking.example.com"
+  gateways:
+  - booking-gateway
+  http:
+  - route:
+    - destination:
+        host: booking-service
+        port:
+          number: 443

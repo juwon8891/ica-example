@@ -1,0 +1,21 @@
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: istio
+  name: booking-ingress
+spec:
+  tls:
+  - hosts:
+    - booking.example.com
+    secretName: booking-credential
+  rules:
+  - host: booking.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: booking-service
+            port:
+              number: 80
