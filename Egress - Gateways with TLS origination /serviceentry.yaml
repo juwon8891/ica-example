@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: yahoo-ext
+spec:
+  hosts:
+  - finance.yahoo.com
+  ports:
+  - number: 80
+    name: http
+    protocol: HTTP
+  - number: 443
+    name: htts
+    protocol: HTTPS
+  resolution: DNS
+  location: MESH_EXTERNAL
