@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: booking-service
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: booking-service
+  jwtRules:
+  - issuer: "testing@secure.istio.io"
+    jwksUri: https://raw.githubusercontent.com/lorenzo85/scenarios-ica/master/security-authorization-jwt-token/jwks.json
+

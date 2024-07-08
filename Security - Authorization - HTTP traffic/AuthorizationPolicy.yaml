@@ -1,0 +1,17 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: notification-service-policy
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: notification-service
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+       principals: ["cluster.local/ns/default/sa/booking-service-account"]
+    to:
+    - operation:
+       methods: ["POST"]
